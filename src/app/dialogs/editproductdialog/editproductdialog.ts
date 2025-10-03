@@ -34,6 +34,7 @@ import {
 })
 export class EditProductDialog implements OnInit {
   product$: Observable<IProduct[]> | undefined;
+  productName: string = '';
 
   editProductForm = new FormGroup({
     productUId: new FormControl<number | null>(null, [Validators.required]),
@@ -90,6 +91,7 @@ export class EditProductDialog implements OnInit {
     this.product$.subscribe({
       next: (data) => {
         const product = data[0];
+        this.productName = product?.productName || '';
         this.editProductForm.patchValue({
           productUId: product?.productUId,
           productCode: product?.productCode,
