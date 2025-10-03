@@ -2,9 +2,13 @@ ELCOM Task
 
 
 API Key envirment file layout 
+
+import { IApiKey } from '../types/environment';
 export const environment: IApiKey = {
   apiKey: '',
 };
+
+environments/environments.ts
 
 Due to getting cors error from the API not sure if this is becasue of the backend or my brwoer on my mahcine its linux so can get some odd errors 
 I have set up a proxy in the project what is as follows :
