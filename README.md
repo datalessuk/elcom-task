@@ -1,59 +1,32 @@
-# ElcomTask
+ELCOM Task
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
-## Development server
+API Key envirment file layout 
 
-To start a local development server, run:
+import { IApiKey } from '../types/environment';
+export const environment: IApiKey = {
+  apiKey: '',
+};
 
-```bash
+environments/environments.ts
+
+Due to getting cors error from the API not sure if this is becasue of the backend or my brwoer on my mahcine its linux so can get some odd errors 
+I have set up a proxy in the project what is as follows :
+{
+  "/api": {
+    "target": "https://test.evolve-s2p.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug"
+  }
+}
+
+Inside of the API service i have commented out the code for the normal url so if this is not a problem on your machine use //private url = 'http://test.evolve-s2p.com/CRUDExample/'; and use  "start": "ng serve" in the package.json
+
+Used materual ui
+<b/>
+npm install
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
