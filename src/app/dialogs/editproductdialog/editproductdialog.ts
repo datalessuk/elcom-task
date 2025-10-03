@@ -91,15 +91,15 @@ export class EditProductDialog implements OnInit {
       next: (data) => {
         const product = data[0];
         this.editProductForm.patchValue({
-          productUId: product.productUId,
-          productCode: product.productCode,
-          productName: product.productName,
-          productDescription: product.productDescription,
-          manufactureCode: product.manufactureCode,
-          manufactureName: product.manufactureName,
-          manufactureDescription: product.manufactureDescription,
-          cartonQty: product.cartonQty,
-          available: product.available,
+          productUId: product?.productUId,
+          productCode: product?.productCode,
+          productName: product?.productName,
+          productDescription: product?.productDescription,
+          manufactureCode: product?.manufactureCode,
+          manufactureName: product?.manufactureName,
+          manufactureDescription: product?.manufactureDescription,
+          cartonQty: product?.cartonQty,
+          available: product?.available,
         });
       },
     });

@@ -10,3 +10,23 @@ mat-paginator {
 .button-container {
   padding-top: 1rem;
 }
+
+.error-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-mdc-row {
+  background-color: #f7f6fe;
+}
+
+.mat-mdc-header-row {
+  background-color: #26264f;
+  color: white;
+}
+
+.button-container {
+  padding-bottom: 1rem;
+}

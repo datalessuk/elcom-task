@@ -134,7 +134,6 @@ export class Task implements OnInit {
         const request: IProduct = {
           ...result,
           cartonQty: Number(result.cartonQty),
-          available: Boolean(result.available),
         };
 
         this.productService.addProduct(request).subscribe({
@@ -170,8 +169,8 @@ export class Task implements OnInit {
         const request: IProduct = {
           ...result,
           cartonQty: Number(result.cartonQty),
-          available: Boolean(result.available),
         };
+        console.log(request);
         this.productService.editProduct(request).subscribe({
           next: (res: boolean) => {
             if (res) {
