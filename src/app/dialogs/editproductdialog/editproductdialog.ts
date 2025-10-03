@@ -112,10 +112,12 @@ export class EditProductDialog implements OnInit {
   editProduct() {
     if (this.editProductForm.valid) {
       this.dialogRef.close(this.editProductForm.value);
+      this.editProductForm.reset();
     }
   }
 
   close() {
+    this.editProductForm.reset();
     this.dialogRef.close();
   }
 }

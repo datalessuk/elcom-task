@@ -73,11 +73,13 @@ export class AddProductDialog {
 
   close(): void {
     this.dialogRef.close();
+    this.productForm.reset();
   }
 
   addProduct() {
     if (this.productForm.valid) {
       this.dialogRef.close(this.productForm.value);
+      this.productForm.reset();
     }
   }
 }

@@ -13,6 +13,7 @@ import { EditProductDialog } from '../dialogs/editproductdialog/editproductdialo
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-task',
@@ -25,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSnackBarModule,
     MatPaginatorModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './task.html',
   standalone: true,
@@ -35,6 +37,7 @@ export class Task implements OnInit {
   dataSource = new MatTableDataSource<IProducts>();
   private _snackBar = inject(MatSnackBar);
   private refreshTrigger$ = new Subject<void>();
+  loading = true;
   displayedColumns: string[] = [
     'productUId',
     'productCode',
@@ -74,8 +77,18 @@ export class Task implements OnInit {
         startWith(null),
         switchMap(() => this.productService.getProducts())
       )
-      .subscribe((data) => {
-        this.dataSource.data = data;
+      .subscribe({
+        next: (data) => {
+          this.dataSource.data = data;
+          this.loading = false;
+        },
+        error: (error) => {
+          console.error('something went wrong', error);
+          this._snackBar.open(`error loading products`, 'Close', {
+            duration: 3000,
+          });
+          this.loading = false;
+        },
       });
   }
 
@@ -88,6 +101,7 @@ export class Task implements OnInit {
   }
 
   refreshProducts() {
+    this.loading = true;
     this.refreshTrigger$.next();
   }
 
