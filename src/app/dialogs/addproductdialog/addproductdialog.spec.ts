@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddProductDialog } from './addproductdialog';
+import { FormService } from '../../../services/form.service';
 
 fdescribe('AddProductDialog', () => {
   let component: AddProductDialog;
@@ -10,7 +11,7 @@ fdescribe('AddProductDialog', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AddProductDialog, ReactiveFormsModule],
-      providers: [{ provide: MatDialogRef, useValue: {} }],
+      providers: [{ provide: MatDialogRef, useValue: {} }, FormService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddProductDialog);
@@ -30,7 +31,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate productCode: required and maxLength 100', () => {
-    const control = component.productForm.get('productCode');
+    const control = component.productForm.get(
+      'productCode'
+    ) as unknown as FormControl<string>;
     control?.setValue('');
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -59,7 +62,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate product name: required and maxLength 100', () => {
-    const control = component.productForm.get('productName');
+    const control = component.productForm.get(
+      'productName'
+    ) as unknown as FormControl<string>;
     control?.setValue('');
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -88,7 +93,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate product description: required and maxLength 100', () => {
-    const control = component.productForm.get('productDescription');
+    const control = component.productForm.get(
+      'productDescription'
+    ) as unknown as FormControl<string>;
     control?.setValue('');
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -117,7 +124,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate manufacture code: required and maxLength 100', () => {
-    const control = component.productForm.get('manufactureCode');
+    const control = component.productForm.get(
+      'manufactureCode'
+    ) as unknown as FormControl<string>;
     control?.setValue('');
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -146,7 +155,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate manufacture description: required and maxLength 100', () => {
-    const control = component.productForm.get('manufactureDescription');
+    const control = component.productForm.get(
+      'manufactureDescription'
+    ) as unknown as FormControl<string>;
     control?.setValue('');
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -175,8 +186,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate carton qty: required and numeric only', () => {
-    const control = component.productForm.get('cartonQty');
-
+    const control = component.productForm.get(
+      'cartonQty'
+    ) as unknown as FormControl<number | null>;
     control?.setValue(null);
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
@@ -195,8 +207,9 @@ fdescribe('AddProductDialog', () => {
   });
 
   it('should validate available: required', () => {
-    const control = component.productForm.get('available');
-
+    const control = component.productForm.get(
+      'available'
+    ) as unknown as FormControl<boolean | null>;
     control?.setValue(null);
     expect(control?.valid).toBeFalse();
     expect(control?.errors?.['required']).toBeTrue();
