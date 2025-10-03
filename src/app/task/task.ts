@@ -184,7 +184,6 @@ export class Task implements OnInit {
           ...result,
           cartonQty: Number(result.cartonQty),
         };
-        console.log(request);
         this.productService.editProduct(request).subscribe({
           next: (res: boolean) => {
             if (res) {
