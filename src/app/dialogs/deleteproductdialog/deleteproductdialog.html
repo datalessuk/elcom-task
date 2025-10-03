@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Remove Product</h2>
+<mat-dialog-content>
+  Are you sure you want to remove <strong>{{ data?.name }}</strong
+  >?
+</mat-dialog-content>
+<mat-dialog-actions class="center-buttons">
+  <button mat-flat-button color="accent" mat-dialog-close>Cancel</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="removeProduct()"
+    cdkFocusInitial
+  >
+    Delete
+  </button>
+</mat-dialog-actions>
