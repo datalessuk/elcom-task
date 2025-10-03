@@ -29,7 +29,7 @@
       <mat-label>Product Description</mat-label>
       <input matInput formControlName="productDescription" />
       @if(editProductForm.get('productDescription')?.hasError('required')){
-      <mat-error>Product name is description'</mat-error>
+      <mat-error>Product description is required</mat-error>
       } @if(editProductForm.get('productDescription')?.hasError('pattern')){
       <mat-error>Only alphanumeric allowed</mat-error>
       } @if(editProductForm.get('productDescription')?.hasError('maxlength')){
@@ -40,7 +40,7 @@
       <mat-label>Manufacture Code</mat-label>
       <input matInput formControlName="manufactureCode" />
       @if(editProductForm.get('manufactureCode')?.hasError('required')){
-      <mat-error>Product code is description'</mat-error>
+      <mat-error>Product code required</mat-error>
       } @if(editProductForm.get('manufactureCode')?.hasError('pattern')){
       <mat-error>Only alphanumeric allowed</mat-error>
       } @if(editProductForm.get('manufactureCode')?.hasError('maxlength')){
@@ -51,7 +51,7 @@
       <mat-label>Manufacture Name</mat-label>
       <input matInput formControlName="manufactureName" />
       @if(editProductForm.get('manufactureName')?.hasError('required')){
-      <mat-error>Manufacture name is description'</mat-error>
+      <mat-error>Manufacture name is required</mat-error>
       } @if(editProductForm.get('manufactureName')?.hasError('pattern')){
       <mat-error>Only alphanumeric allowed</mat-error>
       } @if(editProductForm.get('manufactureName')?.hasError('maxlength')){
@@ -62,7 +62,7 @@
       <mat-label>Manufacture Description</mat-label>
       <input matInput formControlName="manufactureDescription" />
       @if(editProductForm.get('manufactureDescription')?.hasError('required')){
-      <mat-error>Manufacture description is description'</mat-error>
+      <mat-error>Manufacture description is required</mat-error>
       } @if(editProductForm.get('manufactureDescription')?.hasError('pattern')){
       <mat-error>Only alphanumeric allowed</mat-error>
       }
@@ -74,7 +74,7 @@
       <mat-label>Carton Qty</mat-label>
       <input matInput formControlName="cartonQty" />
       @if(editProductForm.get('cartonQty')?.hasError('required')){
-      <mat-error>Product ID is required</mat-error>
+      <mat-error>Carton Qty is required</mat-error>
       } @if(editProductForm.get('cartonQty')?.hasError('pattern')){
       <mat-error>Only numbers allowed</mat-error>
       }

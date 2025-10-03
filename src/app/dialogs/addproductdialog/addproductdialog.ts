@@ -36,33 +36,33 @@ export class AddProductDialog {
     productCode: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
 
     productName: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
     productDescription: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
     manufactureCode: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
     manufactureName: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
     manufactureDescription: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
-      Validators.pattern('^[a-zA-Z0-9 ]*$'),
+      Validators.pattern(/^[\w\s-]+$/),
     ]),
     cartonQty: new FormControl<number | null>(null, [
       Validators.required,
