@@ -1,22 +1,12 @@
 import { Component } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
 import { FormService } from '../../../services/form.service';
+import { FormTemplate } from '../../form/formtemplate/formtemplate';
 
 @Component({
   selector: 'addproductdialog',
-  imports: [
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-  ],
+  imports: [MatDialogModule, ReactiveFormsModule, FormTemplate],
   standalone: true,
   templateUrl: './addproductdialog.html',
   styleUrl: './addproductdialog.scss',

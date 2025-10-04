@@ -1,0 +1,88 @@
+<form [formGroup]="productForm" class="product-form">
+  <mat-form-field>
+    <mat-label>Product Code</mat-label>
+    <input matInput formControlName="productCode" />
+    @if(productForm.get('productCode')?.hasError('required')){
+    <mat-error>Product code is required</mat-error>
+    } @if(productForm.get('productCode')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('productCode')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="productName" />
+    @if(productForm.get('productName')?.hasError('required')){
+    <mat-error>Product name is required</mat-error>
+    } @if(productForm.get('productName')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('productName')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Product Description</mat-label>
+    <input matInput formControlName="productDescription" />
+    @if(productForm.get('productDescription')?.hasError('required')){
+    <mat-error>Product description is required</mat-error>
+    } @if(productForm.get('productDescription')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('productDescription')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Manufacture Code</mat-label>
+    <input matInput formControlName="manufactureCode" />
+    @if(productForm.get('manufactureCode')?.hasError('required')){
+    <mat-error>Product code required</mat-error>
+    } @if(productForm.get('manufactureCode')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('manufactureCode')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Manufacture Name</mat-label>
+    <input matInput formControlName="manufactureName" />
+    @if(productForm.get('manufactureName')?.hasError('required')){
+    <mat-error>Manufacture name is required</mat-error>
+    } @if(productForm.get('manufactureName')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('manufactureName')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Manufacture Description</mat-label>
+    <input matInput formControlName="manufactureDescription" />
+    @if(productForm.get('manufactureDescription')?.hasError('required')){
+    <mat-error>Manufacture description is required</mat-error>
+    } @if(productForm.get('manufactureDescription')?.hasError('pattern')){
+    <mat-error>Only alphanumeric allowed</mat-error>
+    } @if(productForm.get('manufactureDescription')?.hasError('maxlength')){
+    <mat-error>Max length 100</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Carton Qty</mat-label>
+    <input matInput formControlName="cartonQty" />
+    @if(productForm.get('cartonQty')?.hasError('required')){
+    <mat-error>Carton Qty is required</mat-error>
+    } @if(productForm.get('cartonQty')?.hasError('pattern')){
+    <mat-error>Only numbers allowed</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Available</mat-label>
+    <mat-select formControlName="available">
+      <mat-option [value]="true">true</mat-option>
+      <mat-option [value]="false">false</mat-option>
+    </mat-select>
+    @if(productForm.get('available')?.hasError('required')){
+    <mat-error>Available required</mat-error>
+    }
+  </mat-form-field>
+</form>
