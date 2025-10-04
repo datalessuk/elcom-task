@@ -1,22 +1,26 @@
 <h2 mat-dialog-title>
   Edit Product: <strong>{{ productName }}</strong>
 </h2>
-
 <mat-dialog-content>
-  @if(product$){ @if(editProductForm){
+  @if(loading){
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  } @else if(productFound && editProductForm){
   <app-formtemplate [productForm]="editProductForm" />
-  } }@else {
+  } @else {
   <strong>Sorry could not find the product.</strong>
   }
-  <mat-dialog-actions class="center-buttons">
-    <button mat-flat-button color="accent" (click)="close()">Close</button>
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="editProductForm.invalid"
-      (click)="editProduct()"
-    >
-      Edit Product
-    </button>
-  </mat-dialog-actions>
 </mat-dialog-content>
+
+<mat-dialog-actions class="center-buttons">
+  <button mat-flat-button color="accent" (click)="close()">Close</button>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!editProductForm || editProductForm.invalid"
+    (click)="editProduct()"
+  >
+    Edit Product
+  </button>
+</mat-dialog-actions>
