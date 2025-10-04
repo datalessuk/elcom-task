@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '../../../services/form.service';
 import { FormTemplate } from '../../form/formtemplate/formtemplate';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-editproductdialog',
   imports: [
@@ -21,6 +21,7 @@ import { FormTemplate } from '../../form/formtemplate/formtemplate';
     MatSelectModule,
     MatButtonModule,
     FormTemplate,
+    MatProgressSpinnerModule,
   ],
   standalone: true,
   templateUrl: './editproductdialog.html',
@@ -30,7 +31,8 @@ export class EditProductDialog implements OnInit {
   product$: Observable<IProduct[]> | undefined;
   productName: string = '';
   editProductForm = new FormGroup({});
-  loading = false;
+  loading: boolean = true;
+  productFound: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -46,22 +48,35 @@ export class EditProductDialog implements OnInit {
   }
 
   getProduct() {
+    this.loading = true;
     this.product$ = this.productService.getProduct(this.data?.id);
+
     this.product$.subscribe({
       next: (data) => {
-        const product = data[0];
-        this.productName = product?.productName || '';
-        this.editProductForm.patchValue({
-          productUId: product?.productUId,
-          productCode: product?.productCode,
-          productName: product?.productName,
-          productDescription: product?.productDescription,
-          manufactureCode: product?.manufactureCode,
-          manufactureName: product?.manufactureName,
-          manufactureDescription: product?.manufactureDescription,
-          cartonQty: product?.cartonQty,
-          available: product?.available,
-        });
+        if (data && data.length > 0) {
+          const product = data[0];
+          this.productName = product?.productName || '';
+          this.editProductForm.patchValue({
+            productUId: product?.productUId,
+            productCode: product?.productCode,
+            productName: product?.productName,
+            productDescription: product?.productDescription,
+            manufactureCode: product?.manufactureCode,
+            manufactureName: product?.manufactureName,
+            manufactureDescription: product?.manufactureDescription,
+            cartonQty: product?.cartonQty,
+            available: product?.available,
+          });
+          this.productFound = true;
+          //if no product found it returns empty array
+        } else {
+          this.productFound = false;
+        }
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error(`Something went wrong`, err);
+        this.loading = false;
       },
     });
     this.editProductForm.markAllAsTouched();

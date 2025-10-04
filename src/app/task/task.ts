@@ -14,6 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-task',
@@ -27,6 +28,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
   ],
   templateUrl: './task.html',
   standalone: true,
@@ -37,7 +39,7 @@ export class Task implements OnInit {
   dataSource = new MatTableDataSource<IProducts>();
   private _snackBar = inject(MatSnackBar);
   private refreshTrigger$ = new Subject<void>();
-  loading = true;
+  loading: boolean = true;
   displayedColumns: string[] = [
     'productUId',
     'productCode',
