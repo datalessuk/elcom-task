@@ -36,7 +36,7 @@
     <mat-label>Manufacture Code</mat-label>
     <input matInput formControlName="manufactureCode" />
     @if(productForm.get('manufactureCode')?.hasError('required')){
-    <mat-error>Product code required</mat-error>
+    <mat-error>Manufacture code required</mat-error>
     } @if(productForm.get('manufactureCode')?.hasError('pattern')){
     <mat-error>Only alphanumeric allowed</mat-error>
     } @if(productForm.get('manufactureCode')?.hasError('maxlength')){

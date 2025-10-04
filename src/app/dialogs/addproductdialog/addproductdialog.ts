@@ -3,10 +3,16 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '../../../services/form.service';
 import { FormTemplate } from '../../form/formtemplate/formtemplate';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'addproductdialog',
-  imports: [MatDialogModule, ReactiveFormsModule, FormTemplate],
+  imports: [
+    MatDialogModule,
+    ReactiveFormsModule,
+    FormTemplate,
+    MatButtonModule,
+  ],
   standalone: true,
   templateUrl: './addproductdialog.html',
   styleUrl: './addproductdialog.scss',
