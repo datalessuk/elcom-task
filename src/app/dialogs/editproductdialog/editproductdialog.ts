@@ -4,8 +4,6 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../../../services/products.service';
@@ -13,16 +11,16 @@ import { IProduct } from '../../../types/products';
 import { Observable } from 'rxjs';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '../../../services/form.service';
+import { FormTemplate } from '../../form/formtemplate/formtemplate';
 
 @Component({
   selector: 'app-editproductdialog',
   imports: [
     MatDialogModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    FormTemplate,
   ],
   standalone: true,
   templateUrl: './editproductdialog.html',
@@ -32,6 +30,7 @@ export class EditProductDialog implements OnInit {
   product$: Observable<IProduct[]> | undefined;
   productName: string = '';
   editProductForm = new FormGroup({});
+  loading = false;
 
   constructor(
     private productService: ProductService,
